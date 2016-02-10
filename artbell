@@ -1,4 +1,0 @@
-#!/bin/bash
-
-amixer -D pulse sset Master 35%
-cvlc http://live.darkmatterdigitalnetwork.com/darkmatter.mp3
