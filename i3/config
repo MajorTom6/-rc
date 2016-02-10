@@ -97,11 +97,13 @@ bar {
         status_command ~/.i3/status.sh
 	
 	colors {
-		statusline #e65200
-		focused_workspace #4c4c4c #e65200 #ffffff
+		statusline #ab363f
+		focused_workspace #4c4c4c #ab363f #ffffff
 	}
 }
 
-client.focused          #e65200 #e65200 #ffffff #e65200
+client.focused          #ab363f #ab363f #ffffff #ab363f
 
+for_window [class="Steam"] floating enable
 exec --no-startup-id feh --bg-scale /home/tom/Dropbox/Misc/wall.jpg
+exec --no-startup-id xrandr --output DVI-I-1 --left-of DVI-I-0
