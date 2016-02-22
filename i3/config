@@ -103,7 +103,5 @@ bar {
 }
 
 client.focused          #ab363f #ab363f #ffffff #ab363f
-
-for_window [class="Steam"] floating enable
-exec --no-startup-id feh --bg-scale /home/tom/Dropbox/Misc/wall.jpg
 exec --no-startup-id xrandr --output DVI-I-1 --left-of DVI-I-0
+exec --no-startup-ad nitrogen --restore
