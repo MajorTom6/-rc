@@ -104,4 +104,4 @@ bar {
 
 client.focused          #ab363f #ab363f #ffffff #ab363f
 exec --no-startup-id xrandr --output DVI-I-1 --left-of DVI-I-0
-exec --no-startup-ad nitrogen --restore
+exec --no-startup-id nitrogen --restore
