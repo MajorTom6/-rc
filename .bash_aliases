@@ -1,6 +1,6 @@
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
-alias rm='rm -r'
+alias rm='trash-put'
 alias octave='octave --no-gui -q'
 alias clc='clear clear'
 alias clear='clear clear'
