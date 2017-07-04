@@ -1,0 +1,12 @@
+#!/bin/bash
+echo
+for dir in *; do
+        check=$(file $dir)
+        if [[ $check == *"directory"* ]]; then
+                cd $dir
+                echo $dir
+                git status
+                echo 
+                cd ..
+        fi
+done
