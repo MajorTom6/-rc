@@ -1,0 +1,50 @@
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "name": "Inbox - thomas.barrett_ext@hoefliger.de - Mozilla Thunderbird",
+    "percent": 0.616666666666667,
+    "swallows": [
+       {
+       "class": "^Thunderbird$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splitv",
+    "percent": 0.383333333333333,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "name": "tom@soyuz: ~",
+            "percent": 0.5,
+            "swallows": [
+               {
+               "class": "^XTerm$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "normal",
+            "current_border_width": 2,
+            "floating": "auto_off",
+            "name": "Oracle VM VirtualBox Manager",
+            "percent": 0.5,
+            "swallows": [
+               {
+                    "class": "^VirtualBox$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
