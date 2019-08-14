@@ -1,0 +1,3 @@
+#!/bin/bash
+stterm -e aerc &
+stterm -e htop &
