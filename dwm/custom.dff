@@ -1,0 +1,24 @@
+diff --git a/dwm.c b/dwm.c
+index 88f3e04..a1e1ea4 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -2254,6 +2254,11 @@ zoom(const Arg *arg)
+ 	pop(c);
+ }
+ 
++void
++autostart(void) {
++	system("~/.autostart &");
++}
++
+ int
+ main(int argc, char *argv[])
+ {
+@@ -2272,6 +2277,7 @@ main(int argc, char *argv[])
+ 		die("pledge");
+ #endif /* __OpenBSD__ */
+ 	scan();
++	autostart();
+ 	run();
+ 	cleanup();
+ 	XCloseDisplay(dpy);
