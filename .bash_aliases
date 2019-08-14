@@ -1,7 +1,0 @@
-alias poweroff='systemctl poweroff'
-alias reboot='systemctl reboot'
-alias rm='trash-put'
-alias octave='octave --no-gui -q'
-alias clc='clear clear'
-alias clear='clear clear'
-alias rs='rsync -arv --progress hdd/ flash'
