@@ -1,3 +1,10 @@
 #!/bin/bash
-stterm -e aerc &
+wait_time=0.1
+
+stterm -e trans -shell -brief &
+sleep $wait_time
+stterm -e ncmpcpp &
+sleep $wait_time
 stterm -e htop &
+sleep $wait_time
+stterm -e aerc &
