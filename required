@@ -1,0 +1,18 @@
+#!/bin/bash
+apt install w3m \
+	    firefox-esr \
+	    xorg \
+	    xorg-dev \
+	    nitrogen \
+	    arandr \
+	    xinit \
+	    htop \
+	    tree \
+    	    fish \
+	    git \
+	    neovim \
+	    stterm \
+	    dmenu \
+	    acpi \
+	    build-essential \
+	    psmisc

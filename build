@@ -1,0 +1,3 @@
+#!/bin/bash
+git clone https://git.suckless.org/dwm /home/tom/src/dwm
+git clone https://git.suckless.org/dwmstatus /home/tom/src/dwmstatus
