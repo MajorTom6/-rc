@@ -35,7 +35,7 @@ index d2a4b03..5ab33db 100644
  
 +char *
 +getpartition(char *partition) {
-+	char *co = smprintf("df -h | grep %s | cut -d ' ' -f 12 | tr -cd '[:print:]'", partition);
++	char *co = smprintf("df -lh | grep %s | tr -s ' ' | cut -d ' ' -f 4 | tr -d '\n'", partition);
 +	FILE *fd = popen(co, "r");
 +	if (fd == NULL)
 +		return smprintf("invalid");
