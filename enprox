@@ -1,4 +1,0 @@
-#!/bin/bash
-export http_proxy=http://barrettt:zzzz@hhwsg4.hoefliger.de:8080
-export https_proxy=http://barrettt:zzzz@hhwsg4.hoefliger.de:8080
-export ftp_proxy=http://barrettt:zzzz@hhwsg4.hoefliger.de:8080
