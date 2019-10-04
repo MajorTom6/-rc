@@ -86,8 +86,8 @@ index d2a4b03..5ab33db 100644
 -				tmbln);
 +		tmbln = mktimes("%a %d %b %H:%M", tzberlin);
 +
-+		status = smprintf("%s | %s | %s | %s",
-+				   avgs, partition, bat, tmbln);
++		status = smprintf(" %s | %s | %s | %s",
++				    avgs, partition, bat, tmbln);
  		setstatus(status);
  
 -		free(t0);
