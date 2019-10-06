@@ -33,3 +33,5 @@ cp $RC_DIR'/.xinitrc' $HOME_DIR
 # autostart script
 cp $RC_DIR'/.autostart' $HOME_DIR
 
+# extras
+#vboxmanage setproperty machinefolder /home/tom/vms
