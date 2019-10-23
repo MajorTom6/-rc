@@ -5,8 +5,11 @@ apt install w3m \
 	    xorg-dev \
 	    nitrogen \
 	    arandr \
+	    scrot \
+	    feh \
 	    xinit \
 	    htop \
+	    ncdu \
 	    tree \
     	    fish \
 	    git \
