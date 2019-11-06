@@ -1,21 +1,40 @@
 #!/bin/bash
-apt install w3m \
-	    firefox-esr \
-	    xorg \
-	    xorg-dev \
-	    nitrogen \
-	    arandr \
-	    scrot \
-	    feh \
-	    xinit \
-	    htop \
-	    ncdu \
-	    tree \
-    	    fish \
-	    git \
-	    neovim \
-	    stterm \
-	    dmenu \
-	    acpi \
-	    build-essential \
-	    psmisc
+
+# display
+apt install -y \
+	xorg \
+	xorg-dev \
+	nitrogen \
+	arandr \
+	scrot \
+	feh \
+	xinit
+
+# utilities
+apt install -y \
+	htop \
+	ncdu \
+	tree \
+	fish \
+	git \
+	neovim \
+	stterm \
+	dmenu
+
+# web
+apt install -y \
+	w3m \
+	curl \
+	netcat \
+	firefox-esr
+
+# security
+apt install -y \
+	ccrypt \
+	pwgen
+
+# misc
+apt install -y \
+	acpi \
+	build-essential \
+	psmisc
