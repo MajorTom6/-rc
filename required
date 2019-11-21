@@ -33,8 +33,21 @@ apt install -y \
 	ccrypt \
 	pwgen
 
+# lxc containers
+apt install -y \
+	lxc \
+	libvirt0 \
+	libpam-cgfs \
+	bridge-utils \
+	libvirt-clients \
+	libvirt-daemon-system \
+	iptables \
+	ebtables \
+	dnsmasq-base
+
 # misc
 apt install -y \
 	acpi \
+	lshw \
 	build-essential \
 	psmisc

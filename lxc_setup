@@ -1,0 +1,10 @@
+#!/bin/bash
+
+virsh net-start default
+virsh net-autostart default
+
+echo "kernel.unprivileged_userns_clone=1" > /etc/sysctl.d/80-lxc-userns.conf
+echo "tom veth virbr0 2" > /etc/lxc/lxc-usernet
+
+echo "you should reboot now."
+# lxc-create -n name -t download -- --dist archlinux --release current --arch amd64
