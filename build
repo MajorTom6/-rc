@@ -29,6 +29,10 @@ make -C $DWMSTS_DIR
 # fish setup
 cp -r $RC_DIR'/.config/fish' $HOME'/.config/'
 
+# lxc setup
+cp -r $RC_DIR'/.config/lxc' $HOME'/.config'
+chmod a+rw $HOME'/.local/' $HOME'/.local/share'
+
 # freedesktop setup
 cp $RC_DIR'/.config/user-dirs.dirs' $HOME'/.config/'
 
