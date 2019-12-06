@@ -4,6 +4,7 @@
 apt install -y \
 	xorg \
 	xorg-dev \
+	xauth \
 	nitrogen \
 	arandr \
 	scrot \
