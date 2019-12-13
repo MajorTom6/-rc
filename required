@@ -25,6 +25,8 @@ apt install -y \
 # web
 apt install -y \
 	w3m \
+	w3m-img \
+	nmap \
 	curl \
 	netcat \
 	firefox-esr

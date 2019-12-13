@@ -2,23 +2,37 @@
 #set -e
 
 NAME=$1
+USER=tom
+PASS=durr
+
+# init
 lxc-create -n $NAME -t download -- --dist archlinux --release current --arch amd64
 lxc-start  -n $NAME
 sleep 10
+
+# install basics
 lxc-attach -n $NAME -- pacman -Syu --noconfirm
 lxc-attach -n $NAME -- pacman -Sy --noconfirm \
-	go git sudo fakeroot binutils make gcc patch vim openssh xorg-xauth xorg-xhost
-lxc-attach -n $NAME -- useradd tom
-lxc-attach -n $NAME -- mkdir /home/tom
-lxc-attach -n $NAME -- mkdir /home/tom/yay
-lxc-attach -n $NAME -- git clone https://aur.archlinux.org/yay.git /home/tom/yay
-lxc-attach -n $NAME -- chown tom:tom -R /home/tom
-lxc-attach -n $NAME -- bash -c 'echo "tom ALL=(ALL) ALL" >> /etc/sudoers'
-lxc-attach -n $NAME -- bash -c 'echo -e "tom\ntom" | passwd tom'
-lxc-attach -n $NAME -- bash -c 'cd /home/tom/yay && sudo -S -u tom makepkg -si --noconfirm'
-lxc-attach -n $NAME -- bash -c 'sudo -S -u tom yay -Syu --noconfirm'
+	git sudo vim openssh xorg-xauth xorg-xhost fakeroot binutils
+
+# setup user
+lxc-attach -n $NAME -- useradd $USER
+lxc-attach -n $NAME -- mkdir /home/$USER
+lxc-attach -n $NAME -- bash -c 'echo "'$USER' ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
+lxc-attach -n $NAME -- bash -c 'echo -e "'$PASS'\n'$PASS'" | passwd '$USER
+
+# setup for yay
+lxc-attach -n $NAME -- mkdir /home/$USER/yay
+lxc-attach -n $NAME -- chown $USER:$USER -R /home/$USER
+lxc-attach -n $NAME -- git clone https://aur.archlinux.org/yay-bin.git /home/$USER/yay
+lxc-attach -n $NAME -- bash -c 'cd /home/'$USER'/yay && sudo -u '$USER' makepkg -si --noconfirm'
+lxc-attach -n $NAME -- bash -c 'sudo -u '$USER' yay -Syu --noconfirm'
+
+# setup x11 forwarding
 lxc-attach -n $NAME -- bash -c 'echo "X11Forwarding yes" >> /etc/ssh/sshd_config'
 lxc-attach -n $NAME -- bash -c 'echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config'
 lxc-attach -n $NAME -- bash -c 'echo "X11UseLocalhost yes" >> /etc/ssh/sshd_config'
 lxc-attach -n $NAME -- systemctl start sshd
+
+# display info
 lxc-attach -n $NAME -- ip a
