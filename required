@@ -8,6 +8,7 @@ apt install -y \
 	nitrogen \
 	arandr \
 	scrot \
+	atril \
 	feh \
 	xinit
 
@@ -51,6 +52,7 @@ apt install -y \
 # misc
 apt install -y \
 	acpi \
-	lshw \
 	build-essential \
+	lshw \
+	ledger \
 	psmisc
