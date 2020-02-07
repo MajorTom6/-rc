@@ -19,7 +19,7 @@ lxc-attach -n $NAME -- pacman -Sy --noconfirm \
 lxc-attach -n $NAME -- useradd $USER
 lxc-attach -n $NAME -- mkdir /home/$USER
 lxc-attach -n $NAME -- bash -c 'echo "'$USER' ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
-lxc-attach -n $NAME -- bash -c 'echo -e "'$PASS'\n'$PASS'" | passwd '$USER
+lxc-attach -n $NAME -- bash -c 'echo -e "'$PASS'\n'$PASS'" | passwd $USER'
 
 # setup for yay
 lxc-attach -n $NAME -- mkdir /home/$USER/yay
