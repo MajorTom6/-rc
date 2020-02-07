@@ -1,5 +1,5 @@
 diff --git a/dwmstatus.c b/dwmstatus.c
-index d2a4b03..5ab33db 100644
+index d2a4b03..4b5e093 100644
 --- a/dwmstatus.c
 +++ b/dwmstatus.c
 @@ -17,8 +17,6 @@
@@ -71,7 +71,7 @@ index d2a4b03..5ab33db 100644
 -	for (;;sleep(60)) {
 +	for (;;sleep(10)) {
  		avgs = loadavg();
-+		partition = getpartition("sda1");
++		partition = getpartition("/$");
  		bat = getbattery("/sys/class/power_supply/BAT0");
 -		bat1 = getbattery("/sys/class/power_supply/BAT1");
 -		tmar = mktimes("%H:%M", tzargentina);
@@ -87,7 +87,7 @@ index d2a4b03..5ab33db 100644
 +		tmbln = mktimes("%a %d %b %H:%M", tzberlin);
 +
 +		status = smprintf(" %s | %s | %s | %s",
-+				    avgs, partition, bat, tmbln);
++				  avgs, partition, bat, tmbln);
  		setstatus(status);
  
 -		free(t0);
