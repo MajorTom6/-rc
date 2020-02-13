@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+
+NAME=$1
+USER=tom
+PASS=durr
+
+# init
+lxc-create -n $NAME -t download -- --dist debian --release buster --arch amd64
+lxc-start  -n $NAME
+sleep 10
+
+# install basics
+lxc-attach -n $NAME -- apt update
+lxc-attach -n $NAME -- apt dist-upgrade
+lxc-attach -n $NAME -- apt install -y sudo openssh-server x11-xserver-utils
+
+# setup user
+#lxc-attach -n $NAME -- useradd $USER
+#lxc-attach -n $NAME -- mkdir /home/$USER
+#lxc-attach -n $NAME -- bash -c 'echo "'$USER' ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers'
+#lxc-attach -n $NAME -- bash -c 'echo -e "'$PASS'\n'$PASS'" | passwd $USER'
+
+# setup for yay
+#lxc-attach -n $NAME -- mkdir /home/$USER/yay
+#lxc-attach -n $NAME -- git clone https://aur.archlinux.org/yay-bin.git /home/$USER/yay
+#lxc-attach -n $NAME -- chown $USER:$USER -R /home/$USER
+#lxc-attach -n $NAME -- bash -c 'cd /home/'$USER'/yay && sudo -u '$USER' makepkg -si --noconfirm'
+#lxc-attach -n $NAME -- bash -c 'sudo -u '$USER' yay -Syu --noconfirm'
+
+# setup x11 forwarding
+#lxc-attach -n $NAME -- bash -c 'echo "X11Forwarding yes" >> /etc/ssh/sshd_config'
+#lxc-attach -n $NAME -- bash -c 'echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config'
+#lxc-attach -n $NAME -- bash -c 'echo "X11UseLocalhost yes" >> /etc/ssh/sshd_config'
+#lxc-attach -n $NAME -- systemctl start sshd
+
+# display info
+#lxc-info -n $NAME
