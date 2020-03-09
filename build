@@ -7,6 +7,9 @@ RC_DIR=$HOME'/src/rc'
 git config --global user.name "Tom Barrett"
 git config --global user.email "tom@tombarrett.xyz"
 
+# bin directory
+mkdir $HOME/bin
+
 # dwm setup
 DWM_DIR=$HOME'/src/dwm'
 git clone https://git.suckless.org/dwm $DWM_DIR
@@ -18,6 +21,8 @@ cp $RC_DIR'/dwm/config.h' $DWM_DIR
 
 make -C $DWM_DIR
 
+ln -s $DWM_DIR/dwmstatus $HOME/bin
+
 # dwmstatus setup
 DWMSTS_DIR=$HOME'/src/dwmstatus'
 git clone https://git.suckless.org/dwmstatus $DWMSTS_DIR
@@ -25,6 +30,18 @@ git clone https://git.suckless.org/dwmstatus $DWMSTS_DIR
 patch $DWMSTS_DIR'/dwmstatus.c' $RC_DIR'/dwmstatus/custom.diff'
 
 make -C $DWMSTS_DIR
+
+ln -s $DWMSTS_DIR/dwmstatus $HOME/bin
+
+# st setup
+ST_DIR=$HOME'/src/st'
+git clone https://git.suckless.org/st $ST_DIR
+
+cp $RC_DIR'/st/config.h' $ST_DIR
+
+make -C $ST_DIR
+
+ln -s $ST_DIR/st $HOME/bin
 
 # fish setup
 cp -r $RC_DIR'/.config/fish' $HOME'/.config/'
