@@ -84,22 +84,40 @@ unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-  "#181818", /* base00 */
-  "#ab4642", /* base08 */
-  "#a1b56c", /* base0B */
-  "#f7ca88", /* base0A */
-  "#7cafc2", /* base0D */
-  "#ba8baf", /* base0E */
-  "#86c1b9", /* base0C */
-  "#d8d8d8", /* base05 */
-  "#ab4642", /* base08 */
-  "#dc9656", /* base09 */
-  "#ab4642", /* base08 */
-  "#ab4642", /* base08 */
-  "#a1b56c", /* base0B */
-  "#e8e8e8", /* base06 */
-  "#a16946", /* base0F */
-  "#f8f8f8", /* base07 */
+  "#181818", // Background
+  "#383838", // chmod u+s Background
+  "#383838", // Exectable Directory Background
+  "#f8f8f8", // chmod g+s Background
+  "#a1b56c", // Sticky Directory Background, Executable Directory Foreground
+  "#f8f8f8", // nothing
+  "#86c1b9", // Music
+  "#f8f8f8", // Normal Text
+  "#f8f8f8", // nothing
+  "#ab4642", // Compressed
+  "#a1b56c", // Executables
+  "#dc9656", // Character Files
+  "#7cafc2", // Directories
+  "#ba8baf", // Pictures & Videos
+  "#f7ca88", // Symbolic Links
+  "#f8f8f8", // Cursor
+
+
+  //"#ab4642", // Red
+  //"#a1b56c", // Green
+  //"#7cafc2", // Blue
+  //"#f7ca88", // Yellow
+  //"#ba8baf", // Purple
+  //"#86c1b9", // Cyan
+  //"#dc9656", // Orange
+  //"#a16946", // Brown
+  //"#f8f8f8", // White
+  //"#e8e8e8", // Grey0
+  //"#d8d8d8", // Grey1
+  //"#b8b8b8", // Grey2
+  //"#585858", // Grey3
+  //"#383838", // Grey4
+  //"#282828", // Grey5
+  //"#181818", // Black
 };
 
 /*
@@ -108,7 +126,7 @@ static const char *colorname[] = {
  */
 unsigned int defaultfg = 7;
 unsigned int defaultbg = 0;
-static unsigned int defaultcs = 13;
+static unsigned int defaultcs = 15;
 static unsigned int defaultrcs = 0;
 
 /*

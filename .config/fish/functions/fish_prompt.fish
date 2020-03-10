@@ -1,5 +1,5 @@
 function fish_prompt --description 'Write out the prompt'
-	if test "$TERM" = "linux" 
+	if test "$TERM" = "linux"
 		set error_color red
 		set good_color green
 		set path_color yellow
