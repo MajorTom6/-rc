@@ -85,8 +85,8 @@ unsigned int tabspaces = 8;
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
   "#181818", // Background
-  "#383838", // chmod u+s Background
-  "#383838", // Exectable Directory Background
+  "#ab4642", // Git red & chmod u+s Background
+  "#a1b56c", // Git green & Exectable Directory Background
   "#f8f8f8", // chmod g+s Background
   "#a1b56c", // Sticky Directory Background, Executable Directory Foreground
   "#f8f8f8", // nothing
