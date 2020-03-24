@@ -20,7 +20,6 @@ apt install -y \
 	fish \
 	git \
 	neovim \
-	stterm \
 	dmenu
 
 # web
