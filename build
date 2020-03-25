@@ -21,7 +21,7 @@ cp $RC_DIR'/dwm/config.h' $DWM_DIR
 
 make -C $DWM_DIR
 
-ln -s $DWM_DIR/dwmstatus $HOME/bin
+ln -s $DWM_DIR/dwm $HOME/bin
 
 # dwmstatus setup
 DWMSTS_DIR=$HOME'/src/dwmstatus'
