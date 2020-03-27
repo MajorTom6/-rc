@@ -2,34 +2,34 @@
 
 # display
 apt install -y \
-	xorg \
-	xorg-dev \
-	xauth \
-	nitrogen \
 	arandr \
-	scrot \
 	atril \
 	feh \
+	nitrogen \
+	scrot \
+	xauth \
 	xinit
+	xorg \
+	xorg-dev \
 
 # utilities
 apt install -y \
-	htop \
-	ncdu \
-	tree \
+	dmenu
 	fish \
 	git \
+	htop \
+	ncdu \
 	neovim \
-	dmenu
+	tree \
 
 # web
 apt install -y \
+	curl \
+	firefox-esr
+	netcat \
+	nmap \
 	w3m \
 	w3m-img \
-	nmap \
-	curl \
-	netcat \
-	firefox-esr
 
 # security
 apt install -y \
@@ -38,22 +38,22 @@ apt install -y \
 
 # lxc containers
 apt install -y \
-	lxc \
-	libvirt0 \
-	libpam-cgfs \
 	bridge-utils \
+	dnsmasq-base
+	ebtables \
+	iptables \
+	libpam-cgfs \
+	libvirt0 \
 	libvirt-clients \
 	libvirt-daemon-system \
-	iptables \
-	ebtables \
-	dnsmasq-base
+	lxc \
 
 # misc
 apt install -y \
 	acpi \
 	build-essential \
-	lshw \
 	ledger \
+	lshw \
 	psmisc \
-	sshpass \
 	rcconf
+	sshpass \
