@@ -55,5 +55,5 @@ apt install -y \
 	ledger \
 	lshw \
 	psmisc \
-	rcconf
+	rcconf \
 	sshpass \
