@@ -8,28 +8,28 @@ apt install -y \
 	nitrogen \
 	scrot \
 	xauth \
-	xinit
+	xinit \
 	xorg \
-	xorg-dev \
+	xorg-dev
 
 # utilities
 apt install -y \
-	dmenu
+	dmenu \
 	fish \
 	git \
 	htop \
 	ncdu \
 	neovim \
-	tree \
+	tree
 
 # web
 apt install -y \
 	curl \
-	firefox-esr
+	firefox-esr \
 	netcat \
 	nmap \
 	w3m \
-	w3m-img \
+	w3m-img
 
 # security
 apt install -y \
@@ -39,14 +39,14 @@ apt install -y \
 # lxc containers
 apt install -y \
 	bridge-utils \
-	dnsmasq-base
+	dnsmasq-base \
 	ebtables \
 	iptables \
 	libpam-cgfs \
 	libvirt0 \
 	libvirt-clients \
 	libvirt-daemon-system \
-	lxc \
+	lxc
 
 # misc
 apt install -y \
@@ -56,4 +56,4 @@ apt install -y \
 	lshw \
 	psmisc \
 	rcconf \
-	sshpass \
+	sshpass
