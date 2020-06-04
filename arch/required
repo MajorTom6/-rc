@@ -1,0 +1,17 @@
+#!/bin/bash
+# run as root
+pacman -S --needed - < mainline
+
+useradd tom
+mkdir /home/tom
+
+mkdir /home/tom/yay
+git clone https://aur.archlinux.org/yay-bin.git /home/tom/yay
+
+chown tom:tom -R /home/tom
+
+cd /home/tom/yay && sudo -u tom makepkg -si --noconfirm
+
+sudo -u tom yay -Syu --noconfirm
+
+sudo -u tom yay -S --needed - < aur
