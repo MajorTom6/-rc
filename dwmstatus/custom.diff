@@ -1,5 +1,5 @@
 diff --git a/dwmstatus.c b/dwmstatus.c
-index d2a4b03..4b5e093 100644
+index d2a4b03..555f0bd 100644
 --- a/dwmstatus.c
 +++ b/dwmstatus.c
 @@ -17,8 +17,6 @@
@@ -29,7 +29,7 @@ index d2a4b03..4b5e093 100644
  	}
  
  	if (remcap < 0 || descap < 0)
-@@ -175,47 +173,49 @@ gettemperature(char *base, char *sensor)
+@@ -175,47 +173,70 @@ gettemperature(char *base, char *sensor)
  	return smprintf("%02.0f°C", atof(co) / 1000);
  }
  
@@ -37,6 +37,24 @@ index d2a4b03..4b5e093 100644
 +getpartition(char *partition) {
 +	char *co = smprintf("df -lh | grep %s | tr -s ' ' | cut -d ' ' -f 4 | tr -d '\n'", partition);
 +	FILE *fd = popen(co, "r");
++	if (fd == NULL)
++		return smprintf("invalid");
++
++	char ret[8];
++	if (fgets(ret, 8, fd) == NULL)
++		return smprintf("invalid");
++
++	if (pclose(fd) == -1)
++		return smprintf("invalid");
++
++	return smprintf("%s", ret);
++}
++
++char *
++getvolume() {
++	char *co = smprintf("amixer -D pulse sget Master | grep % | head -n 1 | cut -d ' ' -f 7 | tr -d '[]\n'");
++	FILE *fd = popen(co, "r");
++
 +	if (fd == NULL)
 +		return smprintf("invalid");
 +
@@ -62,6 +80,7 @@ index d2a4b03..4b5e093 100644
  	char *tmbln;
 -	char *t0, *t1, *t2;
 +	char *partition;
++	char *volume;
  
  	if (!(dpy = XOpenDisplay(NULL))) {
  		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -69,7 +88,7 @@ index d2a4b03..4b5e093 100644
  	}
  
 -	for (;;sleep(60)) {
-+	for (;;sleep(10)) {
++	for (;;sleep(1)) {
  		avgs = loadavg();
 +		partition = getpartition("/$");
  		bat = getbattery("/sys/class/power_supply/BAT0");
@@ -85,15 +104,17 @@ index d2a4b03..4b5e093 100644
 -				t0, t1, t2, avgs, bat, bat1, tmar, tmutc,
 -				tmbln);
 +		tmbln = mktimes("%a %d %b %H:%M", tzberlin);
++		volume = getvolume();
 +
-+		status = smprintf(" %s | %s | %s | %s",
-+				  avgs, partition, bat, tmbln);
++		status = smprintf(" %s | %s | %s | %s | %s",
++				  avgs, partition, volume, bat, tmbln);
  		setstatus(status);
  
 -		free(t0);
 -		free(t1);
 -		free(t2);
  		free(avgs);
++		free(volume);
  		free(bat);
 -		free(bat1);
 -		free(tmar);
