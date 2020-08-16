@@ -1,0 +1,59 @@
+diff --git a/scripts/eventHandler.lua b/scripts/eventHandler.lua
+index f30775c..8a49224 100644
+--- a/scripts/eventHandler.lua
++++ b/scripts/eventHandler.lua
+@@ -302,6 +302,7 @@ eventHandler.OnPlayerLevel = function(pid)
+         if eventStatus.validDefaultHandler then
+             Players[pid]:SaveLevel()
+             Players[pid]:SaveStatsDynamic()
++            disableAssassins.OnLevelUp(pid)
+         end
+         customEventHooks.triggerHandlers("OnPlayerLevel", eventStatus, {pid})
+     end
+diff --git a/scripts/player/base.lua b/scripts/player/base.lua
+index 36cdd3c..cc1e8ac 100644
+--- a/scripts/player/base.lua
++++ b/scripts/player/base.lua
+@@ -202,6 +202,8 @@ function BasePlayer:FinishLogin()
+             self:LoadJournal()
+         end
+ 
++        disableAssassins.OnLogin(self.pid)
++
+         if config.shareFactionRanks == true then
+             WorldInstance:LoadFactionRanks(self.pid)
+         else
+@@ -299,6 +301,8 @@ function BasePlayer:EndCharGen()
+ 
+     WorldInstance:LoadKills(self.pid)
+ 
++    disableAssassins.OnLogin(self.pid)
++
+     if config.defaultSpawnCell ~= nil then
+ 
+         tes3mp.SetCell(self.pid, config.defaultSpawnCell)
+diff --git a/scripts/serverCore.lua b/scripts/serverCore.lua
+index a4f7e0c..4c55a3b 100644
+--- a/scripts/serverCore.lua
++++ b/scripts/serverCore.lua
+@@ -1,6 +1,8 @@
+ require("utils")
+ require("enumerations")
+ 
++disableAssassins = require("disableAssassins")
++
+ jsonInterface = require("jsonInterface")
+ 
+ -- Lua's default io library for input/output can't open Unicode filenames on Windows,
+diff --git a/scripts/world/base.lua b/scripts/world/base.lua
+index bc24e76..304b568 100644
+--- a/scripts/world/base.lua
++++ b/scripts/world/base.lua
+@@ -292,6 +292,7 @@ function BaseWorld:SaveKills(pid)
+     for index = 0, tes3mp.GetKillChangesSize(pid) - 1 do
+ 
+         local refId = tes3mp.GetKillRefId(pid, index)
++        disableAssassins.OnKill(pid, refId)
+         local number = tes3mp.GetKillNumber(pid, index)
+         self.data.kills[refId] = number
+     end
