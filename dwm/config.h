@@ -6,8 +6,8 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gapp 	    = 30;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "Hermit-Regular:size=11" };
+static const char dmenufont[]       = "Hermit-Regular:size=11";
 static const char col_gray1[]       = "#181818";
 static const char col_gray2[]       = "#585858";
 static const char col_gray3[]       = "#b8b8b8";

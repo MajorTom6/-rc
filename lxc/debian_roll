@@ -20,9 +20,9 @@ lxc-attach -n $NAME -- adduser $USER --gecos "" --disabled-password
 lxc-attach -n $NAME -- bash -c 'echo -e "'$PASS'\n'$PASS'" | passwd $USER'
 
 # setup x11 forwarding
-lxc-attach -n $NAME -- bash -c 'echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config'
-lxc-attach -n $NAME -- bash -c 'echo "X11UseLocalhost yes" >> /etc/ssh/sshd_config'
-lxc-attach -n $NAME -- systemctl restart sshd
+# lxc-attach -n $NAME -- bash -c 'echo "AllowTcpForwarding yes" >> /etc/ssh/sshd_config'
+# lxc-attach -n $NAME -- bash -c 'echo "X11UseLocalhost yes" >> /etc/ssh/sshd_config'
+# lxc-attach -n $NAME -- systemctl restart sshd
 
 # display info
 lxc-info -n $NAME

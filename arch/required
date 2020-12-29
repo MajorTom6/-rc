@@ -2,8 +2,7 @@
 # run as root
 pacman -S --needed - < mainline
 
-useradd tom
-mkdir /home/tom
+useradd -m tom
 
 mkdir /home/tom/yay
 git clone https://aur.archlinux.org/yay-bin.git /home/tom/yay

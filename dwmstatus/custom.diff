@@ -1,5 +1,5 @@
 diff --git a/dwmstatus.c b/dwmstatus.c
-index d2a4b03..555f0bd 100644
+index d2a4b03..307d290 100644
 --- a/dwmstatus.c
 +++ b/dwmstatus.c
 @@ -17,8 +17,6 @@
@@ -29,7 +29,7 @@ index d2a4b03..555f0bd 100644
  	}
  
  	if (remcap < 0 || descap < 0)
-@@ -175,47 +173,70 @@ gettemperature(char *base, char *sensor)
+@@ -175,47 +173,86 @@ gettemperature(char *base, char *sensor)
  	return smprintf("%02.0f°C", atof(co) / 1000);
  }
  
@@ -51,10 +51,9 @@ index d2a4b03..555f0bd 100644
 +}
 +
 +char *
-+getvolume() {
-+	char *co = smprintf("amixer -D pulse sget Master | grep % | head -n 1 | cut -d ' ' -f 7 | tr -d '[]\n'");
++gettemp() {
++	char *co = smprintf("sensors amdgpu-pci-0400 | grep edge | cut -c 16-22");
 +	FILE *fd = popen(co, "r");
-+
 +	if (fd == NULL)
 +		return smprintf("invalid");
 +
@@ -68,19 +67,37 @@ index d2a4b03..555f0bd 100644
 +	return smprintf("%s", ret);
 +}
 +
++char *
++gettrack() {
++	char *co = smprintf("mpc -h core-a.lan | head -n 1 | tr -d '\n'" );
++	FILE *fd = popen(co, "r");
++	if (fd == NULL)
++		return smprintf("invalid");
++
++	char ret[100];
++	if (fgets(ret, 100, fd) == NULL)
++		return smprintf("invalid");
++
++	if (pclose(fd) == -1)
++		return smprintf("invalid");
++
++	return smprintf("%s", ret);
++}
++
  int
  main(void)
  {
  	char *status;
  	char *avgs;
- 	char *bat;
+-	char *bat;
 -	char *bat1;
 -	char *tmar;
 -	char *tmutc;
  	char *tmbln;
 -	char *t0, *t1, *t2;
 +	char *partition;
-+	char *volume;
++	char *temp;
++	char *track;
  
  	if (!(dpy = XOpenDisplay(NULL))) {
  		fprintf(stderr, "dwmstatus: cannot open display.\n");
@@ -88,10 +105,9 @@ index d2a4b03..555f0bd 100644
  	}
  
 -	for (;;sleep(60)) {
-+	for (;;sleep(1)) {
++	for (;;sleep(10)) {
  		avgs = loadavg();
-+		partition = getpartition("/$");
- 		bat = getbattery("/sys/class/power_supply/BAT0");
+-		bat = getbattery("/sys/class/power_supply/BAT0");
 -		bat1 = getbattery("/sys/class/power_supply/BAT1");
 -		tmar = mktimes("%H:%M", tzargentina);
 -		tmutc = mktimes("%H:%M", tzutc);
@@ -103,19 +119,22 @@ index d2a4b03..555f0bd 100644
 -		status = smprintf("T:%s|%s|%s L:%s B:%s|%s A:%s U:%s %s",
 -				t0, t1, t2, avgs, bat, bat1, tmar, tmutc,
 -				tmbln);
++		partition = getpartition("/$");
 +		tmbln = mktimes("%a %d %b %H:%M", tzberlin);
-+		volume = getvolume();
++		temp = gettemp();
++		track = gettrack();
 +
 +		status = smprintf(" %s | %s | %s | %s | %s",
-+				  avgs, partition, volume, bat, tmbln);
++				  track, avgs, temp, partition, tmbln);
  		setstatus(status);
  
 -		free(t0);
 -		free(t1);
 -		free(t2);
++		free(track);
++		free(temp);
  		free(avgs);
-+		free(volume);
- 		free(bat);
+-		free(bat);
 -		free(bat1);
 -		free(tmar);
 -		free(tmutc);

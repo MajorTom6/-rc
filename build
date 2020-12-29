@@ -16,7 +16,7 @@ git clone https://git.suckless.org/dwm $DWM_DIR
 
 patch $DWM_DIR'/dwm.c' $RC_DIR'/dwm/custom.diff'
 
-cp $RC_DIR'/dwm/config.h' $DWM_DIR
+ln -s $RC_DIR'/dwm/config.h' $DWM_DIR
 
 make -C $DWM_DIR
 
@@ -36,24 +36,30 @@ ln -s $DWMSTS_DIR/dwmstatus $HOME/bin
 ST_DIR=$HOME'/src/st'
 git clone https://git.suckless.org/st $ST_DIR
 
-cp $RC_DIR'/st/config.h' $ST_DIR
+ln -s $RC_DIR'/st/config.h' $ST_DIR
 
 make -C $ST_DIR
 
 ln -s $ST_DIR/st $HOME/bin
 
 # fish setup
-cp -r $RC_DIR'/.config/fish' $HOME'/.config/'
-
-# lxc setup
-cp -r $RC_DIR'/.config/lxc' $HOME'/.config'
-chmod a+rw $HOME'/.local/' $HOME'/.local/share'
+ln -s $RC_DIR'/.config/fish' $HOME'/.config'
 
 # freedesktop setup
-cp $RC_DIR'/.config/user-dirs.dirs' $HOME'/.config/'
+ln -s $RC_DIR'/.config/user-dirs.dirs' $HOME'/.config'
 
 # xorg setup
-cp $RC_DIR'/.xinitrc' $HOME
+ln -s $RC_DIR'/.xinitrc' $HOME
 
 # autostart script
-cp $RC_DIR'/.autostart' $HOME
+ln -s $RC_DIR'/.autostart' $HOME
+
+# ranger setup
+ln -s $RC_DIR'/.config/ranger' $HOME'/.config'
+
+# ncmpcpp setup
+ln -s $RC_DIR'/.config/ncmpcpp' $HOME'/.config'
+
+# neomutt setup
+ln -s $RC_DIR'/.muttrc' $HOME
+ln -s $RC_DIR'/.mailcap' $HOME

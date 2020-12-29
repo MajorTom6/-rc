@@ -1,0 +1,17 @@
+set my_name = "tom"
+set imap_user = tom@tombarrett.xyz
+set imap_pass = blahblah
+set folder = imaps://blahblah
+set spoolfile =+INBOX
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = "~/.cache/mutt/"
+
+set my_user = tom%40tombarrett.xyz
+set record = +Sent
+set from = tom@tombarrett.xyz
+set smtp_pass = $imap_pass
+set smtp_url = smtps://tom%40tombarrett.xyz@blahblah
+set ssl_force_tls = yes
+
+set editor = "nvim +':set textwidth=0'"
