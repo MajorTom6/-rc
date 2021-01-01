@@ -1,0 +1,8 @@
+#!/bin/bash
+if [[ $2 == *"add"* ]] || [[ $2 == *"done"* ]] ; then
+  wget -q --spider http://tombarrett.xyz
+  if [ $? -eq 0 ] ; then
+    git -C ~/.task/ commit -a -m "$2"
+    git -C ~/.task/ push
+  fi
+fi

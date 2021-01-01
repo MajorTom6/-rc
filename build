@@ -63,3 +63,7 @@ ln -s $RC_DIR'/.config/ncmpcpp' $HOME'/.config'
 # neomutt setup
 ln -s $RC_DIR'/.muttrc' $HOME
 ln -s $RC_DIR'/.mailcap' $HOME
+
+# taskwarrior setup
+ln -s $RC_DIR'/.taskrc' $HOME
+ln -s $RC_DIR'/.task' $HOME
