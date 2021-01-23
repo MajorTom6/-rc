@@ -1,0 +1,6 @@
+set connect.tls true
+set connect.host pls
+set connect.port pls
+set connect.user pls
+set connect.password "pls"
+set tui.theme modified.theme
